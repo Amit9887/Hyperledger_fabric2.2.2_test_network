@@ -14,7 +14,7 @@ services:
       - FABRIC_LOGGING_SPEC=INFO
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
       - ORDERER_GENERAL_GENESISMETHOD=file
-      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/genesis.block
+      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer0.genesis.block
       - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
       - ORDERER_GENERAL_TLS_ENABLED=true
@@ -37,13 +37,13 @@ services:
       - test
 
     volumes:
-      - ../genesis.block:/var/hyperledger/orderer/genesis.block
+      - ../genesis.block:/var/hyperledger/orderer/orderer0.genesis.block
       - ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer0.amit.com/msp:/var/hyperledger/orderer/msp
       - ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer0.amit.com/tls:/var/hyperledger/orderer/tls
 
 
   orderer1.example.com:
-    container_name: orderer1.example.com
+    container_name: orderer1.amit.com
     image: hyperledger/fabric-orderer:2.3.2
     dns_search: .
     environment:
@@ -51,7 +51,7 @@ services:
       - FABRIC_LOGGING_SPEC=info
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
       - ORDERER_GENERAL_GENESISMETHOD=file
-      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer1.genesis.block
       - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
       - ORDERER_GENERAL_TLS_ENABLED=true
@@ -74,7 +74,7 @@ services:
       - test
 
     volumes:
-      - ../genesis.block:/var/hyperledger/orderer/genesis.block
+      - ../genesis.block:/var/hyperledger/orderer/orderer1.genesis.block
       - ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer1.amit.com/msp:/var/hyperledger/orderer/msp
       - ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer1.amit.com/tls:/var/hyperledger/orderer/tls
 
@@ -87,7 +87,7 @@ services:
       - FABRIC_LOGGING_SPEC=info
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
       - ORDERER_GENERAL_GENESISMETHOD=file
-      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer2.genesis.block
       - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
       - ORDERER_GENERAL_TLS_ENABLED=true
@@ -106,11 +106,11 @@ services:
     ports:
       - 9050:9050
       - 9446:9446
-   networks:
+    networks:
       - test
 
     volumes:
-      - ../genesis.block:/var/hyperledger/orderer/genesis.block
+      - ../genesis.block:/var/hyperledger/orderer/orderer2.genesis.block
       - ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer2.amit.com/msp:/var/hyperledger/orderer/msp
       - ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer2.amit.com/tls:/var/hyperledger/orderer/tls
   

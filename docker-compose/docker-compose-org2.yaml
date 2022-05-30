@@ -37,7 +37,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=info
       - CORE_PEER_LOCALMSPID=Org2MSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=test_net_test
 
       - CORE_PEER_ID=peer0.org2.amit.com
       - CORE_PEER_ADDRESS=peer0.org2.amit.com:9051
@@ -46,7 +46,7 @@ services:
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
       # Exposed for discovery Service
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.amit.com:9051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org2.amit.com:10051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org2.amit.com:9051
 
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb2:5984
@@ -81,7 +81,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=info
       - CORE_PEER_LOCALMSPID=Org2MSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=test_net_test
 
       - CORE_PEER_ID=peer1.org2.amit.com
       - CORE_PEER_ADDRESS=peer1.org2.amit.com:10051

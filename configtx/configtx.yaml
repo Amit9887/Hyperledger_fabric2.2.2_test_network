@@ -216,7 +216,7 @@ Orderer: &OrdererDefaults
           ServerTLSCert: ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer0.amit.com/tls/server.crt
 
     Addresses:
-        - orderer1.amit.com:7050
+        - orderer0.amit.com:7050
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
@@ -327,12 +327,12 @@ Profiles:
                   ServerTLSCert: ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer0.amit.com/tls/server.crt
 
                 - Host: orderer1.amit.com
-                  Port: 7050
+                  Port: 8050
                   ClientTLSCert: ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer1.amit.com/tls/server.crt
                   ServerTLSCert: ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer1.amit.com/tls/server.crt
 
                 - Host: orderer2.amit.com
-                  Port: 7050
+                  Port: 9050
                   ClientTLSCert: ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer2.amit.com/tls/server.crt
                   ServerTLSCert: ../consortium/crypto-config-ca/ordererOrganizations/amit.com/orderers/orderer2.amit.com/tls/server.crt
             Addresses:

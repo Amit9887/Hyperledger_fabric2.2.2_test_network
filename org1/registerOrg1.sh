@@ -4,8 +4,8 @@ setupOrg1CA() {
 
   echo "Setting Org1 CA"
   
-  mkdir -p consortium/crypto-config-ca/peerOrganizations/org1.amit.com/
-  export FABRIC_CA_CLIENT_HOME=${PWD}/consortium//crypto-config-ca/peerOrganizations/org1.amit.com/
+  mkdir -p ../consortium/crypto-config-ca/peerOrganizations/org1.amit.com/
+  export FABRIC_CA_CLIENT_HOME=${PWD}/../consortium/crypto-config-ca/peerOrganizations/org1.amit.com/
 }
 
 createcertificatesForOrg1() {
@@ -13,7 +13,7 @@ createcertificatesForOrg1() {
   echo "Enroll the CA admin"
   echo
 
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:7054 --caname ca.org1.amit.com --tls.certfiles ${PWD}/consortium/fabric-ca/org1/tls-cert.pem
+  fabric-ca-client enroll -u https://admin:adminpw@localhost:7054 --caname ca.org1.amit.com --tls.certfiles ${PWD}/../consortium/fabric-ca/org1/tls-cert.pem
 }
 #Orgnisation units will be useful in future
 nodeOrgnisationUnit() {
@@ -30,29 +30,29 @@ nodeOrgnisationUnit() {
     OrganizationalUnitIdentifier: admin
   OrdererOUIdentifier:
     Certificate: cacerts/localhost-7054-ca-org1-amit-com.pem
-    OrganizationalUnitIdentifier: orderer' >${PWD}/consortium/crypto-config-ca/peerOrganizations/org1.amit.com/msp/config.yaml
+    OrganizationalUnitIdentifier: orderer' >${PWD}/../consortium/crypto-config-ca/peerOrganizations/org1.amit.com/msp/config.yaml
 
 }
 registerUsers() {
   echo
   echo "Register peer0"
   echo
-  fabric-ca-client register --caname ca.org1.amit.com --id.name peer0 --id.secret peer0pw --id.type peer --tls.certfiles ${PWD}/consortium/fabric-ca/org1/tls-cert.pem
+  fabric-ca-client register --caname ca.org1.amit.com --id.name peer0 --id.secret peer0pw --id.type peer --tls.certfiles ${PWD}/../consortium/fabric-ca/org1/tls-cert.pem
 
   echo
   echo "Register peer1"
   echo
-  fabric-ca-client register --caname ca.org1.amit.com --id.name peer1 --id.secret peer1pw --id.type peer --tls.certfiles ${PWD}/consortium/fabric-ca/org1/tls-cert.pem
+  fabric-ca-client register --caname ca.org1.amit.com --id.name peer1 --id.secret peer1pw --id.type peer --tls.certfiles ${PWD}/../consortium/fabric-ca/org1/tls-cert.pem
 
   echo
   echo "Register user"
   echo
-  fabric-ca-client register --caname ca.org1.amit.com --id.name user1 --id.secret user1pw --id.type client --tls.certfiles ${PWD}/consortium/fabric-ca/org1/tls-cert.pem
+  fabric-ca-client register --caname ca.org1.amit.com --id.name user1 --id.secret user1pw --id.type client --tls.certfiles ${PWD}/../consortium/fabric-ca/org1/tls-cert.pem
 
   echo
   echo "Register the org admin"
   echo
-  fabric-ca-client register --caname ca.org1.amit.com --id.name org1admin --id.secret org1adminpw --id.type admin --tls.certfiles ${PWD}/consortium/fabric-ca/org1/tls-cert.pem
+  fabric-ca-client register --caname ca.org1.amit.com --id.name org1admin --id.secret org1adminpw --id.type admin --tls.certfiles ${PWD}/../consortium/fabric-ca/org1/tls-cert.pem
 }
 createcertificatesForOrg1
 sleep 2
